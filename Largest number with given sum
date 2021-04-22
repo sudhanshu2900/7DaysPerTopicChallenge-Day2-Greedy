@@ -1,0 +1,49 @@
+PROBLEM: 
+        Example 1: N = 5, S = 12
+        Output: 93000
+
+        Explanation: Sum of elements is 12. Largest possible 5 digit number is 93000 with sum 12.
+
+        Example 2: N = 3, S = 29
+        Output:-1
+
+        Explanation: There is no such three digit number whose sum is 29.
+
+
+APPROACH: The idea is to one by one fill all digits from leftmost to rightmost (or from most significant digit to least significant). 
+          We compare the remaining sum with 9 if the remaining sum is more than 9, we put 9 at the current position, else we put the remaining sum. 
+          Since we fill digits from left to right, we put the highest digits on the left side, hence get the largest number. 
+          
+          
+          
+SOLUTION:
+
+
+string largestNumber(int n, int sum)
+    {
+        string ans="";
+        for(int i=0;i<n;i++)
+        {
+            if(sum>=9){
+                ans+=to_string(9);
+                sum=sum-9;
+            }
+            else if(sum==0){
+                ans+='0';
+            }
+            else{
+                ans+=to_string(sum);
+                sum=0;
+            }
+        }
+        if(sum>0){
+            return "-1";
+        }
+        else
+            return ans;
+    }
+    
+    
+    
+    
+    
